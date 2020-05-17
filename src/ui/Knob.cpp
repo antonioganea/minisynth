@@ -74,7 +74,6 @@ float Knob::getPercent() const{
 }
 
 void Knob::onInteract(sf::Event event) {
-
     if ( event.type == sf::Event::MouseWheelScrolled ){
         sf::Vector2f position = circle.getPosition();
         float radius = circle.getRadius();
@@ -83,10 +82,6 @@ void Knob::onInteract(sf::Event event) {
             delta *= event.mouseWheelScroll.delta;
             setPercent(getPercent()+delta);
         }
-    }
-
-    if ( event.type == sf::Event::KeyPressed ){
-        setPercent(getPercent()+0.1f);
     }
 }
 
