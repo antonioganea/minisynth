@@ -14,7 +14,7 @@ double SoundSynth::osc(double delta, OscillatorType oscType)
     case Sine:
         return sin(delta);
     case Square:
-        return sin(delta) > 0 ? 1.0 : -1.0;
+        return sin(delta) > pwm ? 1.0 : -1.0;
     case Sawtooth:
         return fmod(delta/TAU,1);
     case Triangle:
@@ -28,7 +28,7 @@ void SoundSynth::generate(float frequency, unsigned int duration, OscillatorType
     double increment = frequency/SAMPLE_RATE;
 	double x = 0;
 	for (unsigned int i = 0; i < duration; i++) {
-		rawSamples[i] = 20000 * osc(x*TAU, oscType);// sin(x*TAU);
+		rawSamples[i] = 20000.0f * volume * osc(x*TAU, oscType);// sin(x*TAU);
 		x += increment;
 	}
 
@@ -38,21 +38,31 @@ void SoundSynth::generate(float frequency, unsigned int duration, OscillatorType
 	}
 }
 
-void SoundSynth::play(float frequency, OscillatorType oscType){
-    generate(frequency, 4410, oscType);
+void SoundSynth::play(float frequency, OscillatorType oscType, unsigned int duration){
+    generate(frequency, duration, oscType);
     sound.setBuffer(sBuffer);
     sound.play();
 }
 
-void SoundSynth::playNote(int note, OscillatorType oscType){
+void SoundSynth::playNote(int note, OscillatorType oscType, unsigned int duration){
     float frequency = 440 * pow( TWELTH_ROOT_OF_TWO, note);
-    play(frequency, oscType);
+    play(frequency, oscType, duration);
 }
 
 SoundSynth::SoundSynth() {
     rawSamples = new sf::Int16[SAMPLE_RATE * 10]; // Up to 10 seconds of audio
+    pwm = 0;
+    volume = 1;
 }
 
 SoundSynth::~SoundSynth() {
     delete[] rawSamples;
+}
+
+void SoundSynth::setPWM( float v ) {
+    pwm = v;
+}
+
+void SoundSynth::setVolume( float vol ){
+    volume = vol;
 }

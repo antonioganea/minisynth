@@ -24,9 +24,15 @@ int main()
     VirtualController* vc = VirtualController::getInstance();
 
     Knob * durationKnob = UIFactory::createKnob("Duration", 30, 150);
+    Knob * pwmKnob = UIFactory::createKnob("Sq PWM", 100, 150);
+    (*pwmKnob)<< 0.f;
+    Knob * volumeKnob = UIFactory::createKnob("Volume", 170, 150);
+    (*volumeKnob)<< 1.0f;
 
     ElementManager emanager;
     emanager.add(durationKnob);
+    emanager.add(pwmKnob);
+    emanager.add(volumeKnob);
 
     SoundSynth synth;
 
@@ -62,7 +68,11 @@ int main()
                 try{
                     keyboard->press(key);
                     //synth->play(440.f);
-                    synth.playNote(key, oscType);
+                    float d = durationKnob->getPercent();
+                    unsigned int duration = 2205 + d*22050;
+                    synth.setPWM(pwmKnob->getPercent());
+                    synth.setVolume(volumeKnob->getPercent());
+                    synth.playNote(key, oscType, duration);
                 }catch(std::exception& ex){
                     std::cout << ex.what() << std::endl;
                 }

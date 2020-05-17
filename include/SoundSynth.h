@@ -17,11 +17,15 @@ class SoundSynth
     sf::Int16 * rawSamples;
     void generate(float frequency, unsigned int duration, OscillatorType oscType);
     double osc(double delta, OscillatorType oscType);
+    float pwm;
+    float volume;
     public:
-        void play(float frequency, OscillatorType oscType);
-        void playNote(int note, OscillatorType oscType);
+        void play(float frequency, OscillatorType oscType, unsigned int duration);
+        void playNote(int note, OscillatorType oscType, unsigned int duration);
         SoundSynth();
         ~SoundSynth();
+        void setPWM(float pwm);
+        void setVolume(float vol);
 };
 
 #endif // SOUNDSYNTH_HPP_INCLUDED
