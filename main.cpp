@@ -4,17 +4,19 @@
 #include <ui/BayanKeyboard.hpp>
 #include <VirtualController.hpp>
 #include <cmath>
+#include <ui/Knob.hpp>
 using namespace std;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(400, 200), "Minisynth");
-
+    sf::RenderWindow window(sf::VideoMode(800, 400), "Minisynth");
     window.setKeyRepeatEnabled(false);
-
     BayanKeyboard * keyboard = new BayanKeyboard();
 
     VirtualController* vc = VirtualController::getInstance();
+
+    Knob * myKnob = new Knob();
+    myKnob->setPosition(30,120);
 
     while (window.isOpen())
     {
@@ -23,7 +25,6 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-
 
             if (event.type == sf::Event::KeyPressed){
                 int key = vc->getInputOrder(event.key.code);
@@ -40,16 +41,12 @@ int main()
                     keyboard->release(key);
             }
 
-
-            /*
-            if (event.type == sf::Event::TextEntered){
-                cout << event.text.unicode << " " << getOrder(event.text.unicode) << endl;
-            }
-            */
+            myKnob->onInteract(event);
         }
 
         window.clear();
         window.draw(*keyboard);
+        window.draw(*myKnob);
         window.display();
     }
 
