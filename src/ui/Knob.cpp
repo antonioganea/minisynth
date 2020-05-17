@@ -72,8 +72,7 @@ void Knob::onInteract(sf::Event event) {
         if ( utils::getDistance(event.mouseWheelScroll.x,event.mouseWheelScroll.y, position.x, position.y) < radius ) {
             float delta = 0.05f;
             delta *= event.mouseWheelScroll.delta;
-            //setPercent(getPercent()+delta);
-            (*this)+=delta;
+            setPercent(getPercent()+delta);
         }
     }
 }
