@@ -6,14 +6,6 @@
 
 #define INDICATOR_RADIUS 25.f
 
-void Knob::click(){
-    circle.setFillColor(sf::Color::Red);
-}
-
-void Knob::release(){
-    circle.setFillColor(sf::Color::Blue);
-}
-
 void Knob::draw(sf::RenderTarget& target, sf::RenderStates states) const{
     target.draw(circle);
     target.draw(indicatorCircle);
@@ -80,11 +72,26 @@ void Knob::onInteract(sf::Event event) {
         if ( utils::getDistance(event.mouseWheelScroll.x,event.mouseWheelScroll.y, position.x, position.y) < radius ) {
             float delta = 0.05f;
             delta *= event.mouseWheelScroll.delta;
-            setPercent(getPercent()+delta);
+            //setPercent(getPercent()+delta);
+            (*this)+=delta;
         }
     }
 }
 
 void Knob::setTitle(std::string str) {
     nameLabel.setText(str);
+}
+
+void Knob::operator+=(const float& val){
+    float p;
+    (*this)>>p;
+    p+=val;
+    (*this)<<p;
+}
+
+Knob& Knob::operator>>(float& percent){
+    percent = getPercent();
+}
+void Knob::operator<<(const float& percent){
+    setPercent(percent);
 }

@@ -21,12 +21,12 @@ private:
 public:
     Knob();
     void setPosition(float x, float y);
-    void click();
-    void release();
-    void mouseMoved();
     float getPercent() const;
     void onInteract(sf::Event event);
     void setTitle(std::string str);
+    void operator+=(const float& val);
+    Knob& operator>>(float& percent);
+    void operator<<(const float& percent);
 };
 
 
