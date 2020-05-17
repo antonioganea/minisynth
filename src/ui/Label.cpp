@@ -9,6 +9,7 @@ Label::Label() {
     setMaxWidth(60);
     setText("label");
     //setBackgroundRectangle();
+    rectangleVisible = true;
 }
 
 void Label::setBackgroundRectangle() {
@@ -48,11 +49,16 @@ void Label::setText(std::string str) {
 }
 
 void Label::draw(sf::RenderTarget& target, sf::RenderStates states) const{
-    target.draw(rectangle);
+    if ( rectangleVisible )
+        target.draw(rectangle);
     target.draw(text);
 }
 
 void Label::setPosition(float x, float y){
     text.setPosition(x, y);
     rectangle.setPosition(x, y);
+}
+
+void Label::setRectangleVisisble(bool state){
+    rectangleVisible = state;
 }

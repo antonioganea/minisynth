@@ -13,12 +13,14 @@ class Label : public sf::Drawable
     void setTextSize();
     void setBackgroundRectangle();
     float maxWidth;
+    bool rectangleVisible;
     public:
         Label();
         void setText(std::string str);
         void setPosition(float x, float y);
         void setMaxWidth(float width);
         float getMaxWidth() const;
+        void setRectangleVisisble(bool state);
 };
 
 #endif // LABEL_HPP_INCLUDED

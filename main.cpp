@@ -7,6 +7,7 @@
 #include <ui/Knob.hpp>
 
 #include <SoundSynth.h>
+#include <ui/Button.hpp>
 
 using namespace std;
 
@@ -23,6 +24,10 @@ int main()
     myKnob->setTitle("Sustain");
 
     SoundSynth * synth = new SoundSynth();
+
+    Button * button = new Button();
+    button->setPosition(200,300);
+    button->onClick([](){std::cout<<"Hello world"<<std::endl;});
 
     while (window.isOpen())
     {
@@ -50,11 +55,13 @@ int main()
             }
 
             myKnob->onInteract(event);
+            button->onInteract(event);
         }
 
         window.clear();
         window.draw(*keyboard);
         window.draw(*myKnob);
+        window.draw(*button);
         window.display();
     }
 
