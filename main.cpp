@@ -9,6 +9,9 @@
 #include <SoundSynth.h>
 #include <ui/Button.hpp>
 
+#include <ui/UIFactory.hpp>
+#include <ui/ElementManager.hpp>
+
 using namespace std;
 
 int main()
@@ -25,29 +28,28 @@ int main()
 
     SoundSynth * synth = new SoundSynth();
 
+
+
     OscillatorType oscType;
 
-    Button * button1 = new Button();
-    button1->setTitle("Sine");
-    button1->setPosition(200,200);
+    Button * button1 = UIFactory::createButton("Sine", 200, 200);
     button1->onClick([&](){oscType=Sine;});
 
-    Button * button2 = new Button();
-    button2->setTitle("Square");
-    button2->setPosition(200,240);
+    Button * button2 = UIFactory::createButton("Square", 200, 240);
     button2->onClick([&](){oscType=Square;});
 
-    Button * button3 = new Button();
-    button3->setTitle("Saw");
-    button3->setPosition(200,280);
+    Button * button3 = UIFactory::createButton("Saw", 200, 280);
     button3->onClick([&](){oscType=Sawtooth;});
 
-    Button * button4 = new Button();
-    button4->setTitle("Triangle");
-    button4->setPosition(200,320);
+    Button * button4 = UIFactory::createButton("Triangle", 200, 320);
     button4->onClick([&](){oscType=Triangle;});
 
+    ElementManager emanager;
 
+    emanager.add(button1);
+    emanager.add(button2);
+    emanager.add(button3);
+    emanager.add(button4);
 
     while (window.isOpen())
     {
@@ -84,10 +86,11 @@ int main()
         window.clear();
         window.draw(*keyboard);
         window.draw(*myKnob);
-        window.draw(*button1);
-        window.draw(*button2);
-        window.draw(*button3);
-        window.draw(*button4);
+        //window.draw(*button1);
+        //window.draw(*button2);
+        //window.draw(*button3);
+        //window.draw(*button4);
+        window.draw(emanager);
         window.display();
     }
 
