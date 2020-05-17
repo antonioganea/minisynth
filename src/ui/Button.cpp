@@ -7,7 +7,7 @@ Button::Button()
     shape.setSize(sf::Vector2f(120,40));
     shape.setOrigin(60,10);
     shape.setFillColor(sf::Color(64,64,64));
-    label.setText("button");
+    label << "button";
     label.setRectangleVisisble(false);
 }
 
@@ -47,5 +47,5 @@ void Button::onClick(std::function<void()>&& Callback){
 }
 
 void Button::setTitle(std::string str){
-    label.setText(str);
+    label << str;
 }

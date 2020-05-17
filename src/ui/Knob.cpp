@@ -79,7 +79,7 @@ void Knob::onInteract(sf::Event event) {
 }
 
 void Knob::setTitle(std::string str) {
-    nameLabel.setText(str);
+    nameLabel << str;
 }
 
 void Knob::operator+=(const float& val){

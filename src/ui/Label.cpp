@@ -7,7 +7,7 @@ Label::Label() {
     }
     text.setFont(font);
     setMaxWidth(60);
-    setText("label");
+    (*this) << "label";
     //setBackgroundRectangle();
     rectangleVisible = true;
 }
@@ -61,4 +61,8 @@ void Label::setPosition(float x, float y){
 
 void Label::setRectangleVisisble(bool state){
     rectangleVisible = state;
+}
+
+void Label::operator<<(const std::string& str){
+    setText(str);
 }

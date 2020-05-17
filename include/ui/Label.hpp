@@ -21,6 +21,7 @@ class Label : public sf::Drawable
         void setMaxWidth(float width);
         float getMaxWidth() const;
         void setRectangleVisisble(bool state);
+        void operator<<(const std::string& str);
 };
 
 #endif // LABEL_HPP_INCLUDED
