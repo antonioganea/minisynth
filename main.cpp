@@ -5,6 +5,9 @@
 #include <VirtualController.hpp>
 #include <cmath>
 #include <ui/Knob.hpp>
+
+#include <ui/Label.hpp>
+
 using namespace std;
 
 int main()
@@ -16,7 +19,8 @@ int main()
     VirtualController* vc = VirtualController::getInstance();
 
     Knob * myKnob = new Knob();
-    myKnob->setPosition(30,120);
+    myKnob->setPosition(30,150);
+    myKnob->setTitle("Sustain");
 
     while (window.isOpen())
     {

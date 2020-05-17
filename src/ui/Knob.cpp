@@ -18,10 +18,12 @@ void Knob::release(){
 void Knob::draw(sf::RenderTarget& target, sf::RenderStates states) const{
     target.draw(circle);
     target.draw(indicatorCircle);
+    target.draw(nameLabel);
 }
 
 void Knob::setPosition(float x, float y){
     circle.setPosition(x, y);
+    nameLabel.setPosition(x, y - 50);
     setIndicator();
 }
 
@@ -84,4 +86,8 @@ void Knob::onInteract(sf::Event event) {
     if ( event.type == sf::Event::KeyPressed ){
         setPercent(getPercent()+0.1f);
     }
+}
+
+void Knob::setTitle(std::string str) {
+    nameLabel.setText(str);
 }
