@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -31,6 +32,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/ui/BayanButton.hpp" />
+		<Unit filename="include/ui/BayanKeyboard.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/ui/BayanButton.cpp" />
+		<Unit filename="src/ui/BayanKeyboard.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
