@@ -14,7 +14,6 @@ Knob* UIFactory::createKnob(std::string str, int x, int y){
     return knob;
 }
 
-BayanKeyboard* UIFactory::createBayanKeyboard(){
-    BayanKeyboard * keyboard = new BayanKeyboard();
-    return keyboard;
+std::unique_ptr<BayanKeyboard> UIFactory::createBayanKeyboard(){
+    return std::make_unique<BayanKeyboard>();
 }

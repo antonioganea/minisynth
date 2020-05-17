@@ -5,13 +5,15 @@
 #include <ui/Knob.hpp>
 #include <ui/BayanKeyboard.hpp>
 
+#include <memory>
+
 class UIFactory
 {
     UIFactory();
 public:
     static Button* createButton(std::string str, int x, int y);
     static Knob* createKnob(std::string str, int x, int y);
-    static BayanKeyboard* createBayanKeyboard();
+    static std::unique_ptr<BayanKeyboard> createBayanKeyboard();
 };
 
 #endif // UIFACTORY_HPP

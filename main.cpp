@@ -19,7 +19,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 400), "Minisynth");
     window.setKeyRepeatEnabled(false);
-    BayanKeyboard * keyboard = UIFactory::createBayanKeyboard();
+    auto keyboard = UIFactory::createBayanKeyboard();
 
     VirtualController* vc = VirtualController::getInstance();
 
@@ -30,7 +30,7 @@ int main()
 
     SoundSynth synth;
 
-    OscillatorType oscType;
+    OscillatorType oscType = Sine;
 
     Button * button1 = UIFactory::createButton("Sine", 200, 200);
     button1->onClick([&](){oscType=Sine;});
