@@ -51,7 +51,7 @@ const int inputOrder[30] = {
 constexpr int inputs = sizeof(inputOrder) / sizeof(int);
 
 int VirtualController::getOrder(char ch){
-    char * location = strchr(bayanOrder, tolower(ch));
+    char * location = const_cast<char*>(strchr(bayanOrder, tolower(ch)));
     if ( location == NULL ) return -1;
     return location-bayanOrder;
 }

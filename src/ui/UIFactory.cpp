@@ -1,4 +1,4 @@
-#include "UIFactory.hpp"
+#include <ui/UIFactory.hpp>
 
 Button* UIFactory::createButton( std::string str, int x, int y ){
     Button * button = new Button();
