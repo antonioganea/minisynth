@@ -1,7 +1,10 @@
 #include <ui/BayanKeyboard.hpp>
 
+template<typename... Args>
+bool any(Args... args) { return (... || args); }
+
 void BayanKeyboard::press(int button){
-    if ( button > 30 || button < 0 ) {
+    if ( any(button > 30, button < 0) ) {
         KeyboardInputFailEx ex;
         throw ex;
     }
@@ -9,7 +12,7 @@ void BayanKeyboard::press(int button){
 }
 
 void BayanKeyboard::release(int button){
-    if ( button > 30 || button < 0 ) {
+    if ( any(button > 30, button < 0) ) {
         KeyboardInputFailEx ex;
         throw ex;
     }
