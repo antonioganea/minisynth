@@ -7,14 +7,7 @@
 #define SAMPLE_RATE 44100
 #define TAU 6.28318
 
-enum OscillatorType{
-Sine = 0,
-Square = 1,
-Sawtooth = 2,
-Triangle = 3
-};
-
-double osc(double delta, OscillatorType oscType)
+double SoundSynth::osc(double delta, OscillatorType oscType)
 {
     switch (oscType)
     {
@@ -31,11 +24,11 @@ double osc(double delta, OscillatorType oscType)
     }
 }
 
-void SoundSynth::generate(float frequency, unsigned int duration) {
+void SoundSynth::generate(float frequency, unsigned int duration, OscillatorType oscType) {
     double increment = frequency/SAMPLE_RATE;
 	double x = 0;
 	for (unsigned int i = 0; i < duration; i++) {
-		rawSamples[i] = 20000 * osc(x*TAU, Sawtooth);// sin(x*TAU);
+		rawSamples[i] = 20000 * osc(x*TAU, oscType);// sin(x*TAU);
 		x += increment;
 	}
 
@@ -45,15 +38,15 @@ void SoundSynth::generate(float frequency, unsigned int duration) {
 	}
 }
 
-void SoundSynth::play(float frequency){
-    generate(frequency, 4410);
+void SoundSynth::play(float frequency, OscillatorType oscType){
+    generate(frequency, 4410, oscType);
     sound.setBuffer(sBuffer);
     sound.play();
 }
 
-void SoundSynth::playNote(int note){
+void SoundSynth::playNote(int note, OscillatorType oscType){
     float frequency = 440 * pow( TWELTH_ROOT_OF_TWO, note);
-    play(frequency);
+    play(frequency, oscType);
 }
 
 SoundSynth::SoundSynth() {

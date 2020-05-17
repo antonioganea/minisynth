@@ -25,9 +25,29 @@ int main()
 
     SoundSynth * synth = new SoundSynth();
 
-    Button * button = new Button();
-    button->setPosition(200,300);
-    button->onClick([](){std::cout<<"Hello world"<<std::endl;});
+    OscillatorType oscType;
+
+    Button * button1 = new Button();
+    button1->setTitle("Sine");
+    button1->setPosition(200,200);
+    button1->onClick([&](){oscType=Sine;});
+
+    Button * button2 = new Button();
+    button2->setTitle("Square");
+    button2->setPosition(200,240);
+    button2->onClick([&](){oscType=Square;});
+
+    Button * button3 = new Button();
+    button3->setTitle("Saw");
+    button3->setPosition(200,280);
+    button3->onClick([&](){oscType=Sawtooth;});
+
+    Button * button4 = new Button();
+    button4->setTitle("Triangle");
+    button4->setPosition(200,320);
+    button4->onClick([&](){oscType=Triangle;});
+
+
 
     while (window.isOpen())
     {
@@ -43,7 +63,7 @@ int main()
                 if ( key != -1){
                     keyboard->press(key);
                     //synth->play(440.f);
-                    synth->playNote(key);
+                    synth->playNote(key, oscType);
                 }
             }
 
@@ -55,13 +75,19 @@ int main()
             }
 
             myKnob->onInteract(event);
-            button->onInteract(event);
+            button1->onInteract(event);
+            button2->onInteract(event);
+            button3->onInteract(event);
+            button4->onInteract(event);
         }
 
         window.clear();
         window.draw(*keyboard);
         window.draw(*myKnob);
-        window.draw(*button);
+        window.draw(*button1);
+        window.draw(*button2);
+        window.draw(*button3);
+        window.draw(*button4);
         window.display();
     }
 
