@@ -5,8 +5,6 @@
 
 #define INDICATOR_RADIUS 25.f
 
-#define BAD_PI 3.14f
-
 void Knob::click(){
     circle.setFillColor(sf::Color::Red);
 }
@@ -42,10 +40,10 @@ Knob::Knob(){
 };
 
 float Knob::percentToAngle(float percent) {
-    float tau = BAD_PI * 2.f;
+    float tau = M_PI * 2.f;
     float lowOpeningRatio = 1/6.f;
     float lowOpening = tau * lowOpeningRatio;
-    return percent * tau / ( tau / (tau - lowOpening)) + BAD_PI/2 + lowOpening / 2.f;
+    return percent * tau / ( tau / (tau - lowOpening)) + M_PI/2 + lowOpening / 2.f;
 }
 
 void Knob::setIndicator() {
