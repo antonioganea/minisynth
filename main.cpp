@@ -77,10 +77,11 @@ int main()
             }
 
             myKnob->onInteract(event);
-            button1->onInteract(event);
-            button2->onInteract(event);
-            button3->onInteract(event);
-            button4->onInteract(event);
+            emanager.onInteract(event);
+            //button1->onInteract(event);
+            //button2->onInteract(event);
+            //button3->onInteract(event);
+            //button4->onInteract(event);
         }
 
         window.clear();

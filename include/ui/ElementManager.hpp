@@ -13,11 +13,21 @@ public:
     ElementManager();
     ~ElementManager();
 
-    //template<class T>
-    void add(sf::Drawable * element);
-    void lalala();
-
+    template<class T>
+    void add(T element);
     void onInteract(sf::Event event);
 };
+
+template<class T>
+void ElementManager::add (T element){
+    sf::Drawable * dptr = dynamic_cast<sf::Drawable*>(element);
+    if ( dptr != NULL ){
+        drawables.push_back(dptr);
+    }
+    Interactable * iptr = dynamic_cast<Interactable*>(element);
+    if ( iptr != NULL ){
+        interactables.push_back(iptr);
+    }
+}
 
 #endif // ELEMENTMANAGER_INCLUDED_HPP

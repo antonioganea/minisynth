@@ -12,21 +12,6 @@ ElementManager::~ElementManager()
     //dtor
 }
 
-/*
-template<typename T>
-void ElementManager::add(T element){
-    sf::Drawable * ptr = dynamic_cast<sf::Drawable*>(element);
-    if ( ptr != NULL ){
-        drawables.push_back(ptr);
-    }
-}
-*/
-
-void ElementManager::add(sf::Drawable * element){
-        drawables.push_back(element);
-
-}
-
 void ElementManager::draw(sf::RenderTarget& target, sf::RenderStates states) const{
     for( auto & drawable : drawables ){
         target.draw(*drawable);
@@ -34,5 +19,7 @@ void ElementManager::draw(sf::RenderTarget& target, sf::RenderStates states) con
 }
 
 void ElementManager::onInteract(sf::Event event){
-
+    for( auto & interactable : interactables ){
+        interactable->onInteract(event);
+    }
 }
