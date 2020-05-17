@@ -1,7 +1,8 @@
 #include <ui/Knob.hpp>
 
+#include <Utils.hpp>
+
 #include <cmath>
-#include <iostream>
 
 #define INDICATOR_RADIUS 25.f
 
@@ -26,7 +27,7 @@ void Knob::setPosition(float x, float y){
 }
 
 Knob::Knob(){
-    percent = 0.f;
+    percent = 0.5f;
 
     circle.setFillColor(sf::Color(32,32,32));
     circle.setRadius(30.f);
@@ -75,10 +76,13 @@ float Knob::getPercent() const{
 void Knob::onInteract(sf::Event event) {
 
     if ( event.type == sf::Event::MouseWheelScrolled ){
-        float delta = 0.1f;
-        //std::cout<<"HEY " << event.mouseWheelScroll.delta << std::endl;
-        delta *= event.mouseWheelScroll.delta;
-        setPercent(getPercent()+delta);
+        sf::Vector2f position = circle.getPosition();
+        float radius = circle.getRadius();
+        if ( utils::getDistance(event.mouseWheelScroll.x,event.mouseWheelScroll.y, position.x, position.y) < radius ) {
+            float delta = 0.05f;
+            delta *= event.mouseWheelScroll.delta;
+            setPercent(getPercent()+delta);
+        }
     }
 
     if ( event.type == sf::Event::KeyPressed ){
