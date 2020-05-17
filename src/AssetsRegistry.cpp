@@ -2,13 +2,13 @@
 
 #include <iostream>
 
-std::map<std::string,sf::Font*> AssetsRegistry::fonts;
+std::map<std::string,std::shared_ptr<sf::Font>> AssetsRegistry::fonts;
 
-sf::Font* AssetsRegistry::loadFont(std::string path){
+std::shared_ptr<sf::Font> AssetsRegistry::loadFont(std::string path){
     std::cout << "[AssetRegistry] Requested font " << path;
     if ( AssetsRegistry::fonts.find(path) == AssetsRegistry::fonts.end() ){
         std::cout << " loading from file" << std::endl;
-        sf::Font * font = new sf::Font();
+        std::shared_ptr<sf::Font> font = std::make_shared<sf::Font>();
         font->loadFromFile(path);
         AssetsRegistry::fonts.emplace(path,font);
         return font;
