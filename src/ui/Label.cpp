@@ -1,11 +1,9 @@
 #include "Label.hpp"
 
+#include <AssetsRegistry.hpp>
+
 Label::Label() {
-    if (!font.loadFromFile("assets/arial.ttf"))
-    {
-        // error...
-    }
-    text.setFont(font);
+    text.setFont(*AssetsRegistry::loadFont("assets/arial.ttf"));
     setMaxWidth(60);
     (*this) << "label";
     //setBackgroundRectangle();
