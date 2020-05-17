@@ -6,7 +6,7 @@
 #include <cmath>
 #include <ui/Knob.hpp>
 
-#include <ui/Label.hpp>
+#include <SoundSynth.h>
 
 using namespace std;
 
@@ -22,6 +22,8 @@ int main()
     myKnob->setPosition(30,150);
     myKnob->setTitle("Sustain");
 
+    SoundSynth * synth = new SoundSynth();
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -35,6 +37,8 @@ int main()
                 cout << event.key.code << " " << key << endl;
                 if ( key != -1){
                     keyboard->press(key);
+                    //synth->play(440.f);
+                    synth->playNote(key);
                 }
             }
 
