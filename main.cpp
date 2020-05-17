@@ -14,6 +14,7 @@
 
 using namespace std;
 
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 400), "Minisynth");
@@ -58,18 +59,25 @@ int main()
             if (event.type == sf::Event::KeyPressed){
                 int key = vc->getInputOrder(event.key.code);
                 //cout << event.key.code << " " << key << endl;
-                if ( key != -1){
+                try{
                     keyboard->press(key);
                     //synth->play(440.f);
                     synth.playNote(key, oscType);
+                }catch(std::exception& ex){
+                    std::cout << ex.what() << std::endl;
                 }
             }
 
             if (event.type == sf::Event::KeyReleased){
                 int key = vc->getInputOrder(event.key.code);
                 //cout << event.key.code << " " << key << endl;
-                if ( key != -1)
+
+                try{
                     keyboard->release(key);
+                }catch(std::exception& ex){
+                    std::cout << ex.what() << std::endl;
+                }
+
             }
             emanager.onInteract(event);
         }

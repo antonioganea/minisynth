@@ -1,10 +1,18 @@
 #include <ui/BayanKeyboard.hpp>
 
 void BayanKeyboard::press(int button){
+    if ( button > 30 || button < 0 ) {
+        KeyboardInputFailEx ex;
+        throw ex;
+    }
     buttons[button]->press();
 }
 
 void BayanKeyboard::release(int button){
+    if ( button > 30 || button < 0 ) {
+        KeyboardInputFailEx ex;
+        throw ex;
+    }
     buttons[button]->release();
 }
 
