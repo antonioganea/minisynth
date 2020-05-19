@@ -1,6 +1,7 @@
 #ifndef UTILS_HPP_INCLUDED
 #define UTILS_HPP_INCLUDED
 
+#define _USE_MATH_DEFINES
 #include <cmath>
 
 namespace utils {
