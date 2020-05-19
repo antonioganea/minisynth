@@ -23,3 +23,6 @@ I ❤️ music.
 - [x] Smart pointers (minim 1 tip / proiect) [[LINK1]](https://github.com/antonioganea/minisynth/blob/master/src/AssetsRegistry.cpp#L7) -> std::shared_ptr [[LINK2]](https://github.com/antonioganea/minisynth/blob/master/src/ui/UIFactory.cpp#L17) -> std::unique_ptr
 - [x] STL [[LINK1]](https://github.com/antonioganea/minisynth/blob/master/include/AssetsRegistry.hpp#L11) -> std::map [[LINK2]](https://github.com/antonioganea/minisynth/blob/master/include/ui/ElementManager.hpp#L9) -> std::vector
 - [x] Features of C++17/20 (constexpr, consteval, constinit, fold expressions, init statement for if/switch, etc) (minim 1 / proiect) [[macosBranchLink]](https://github.com/antonioganea/minisynth/blob/macos/src/ui/BayanKeyboard.cpp#L4) -> fold expression
+
+## Demo
+[Click here to download a video](https://github.com/antonioganea/quickdoc/blob/master/prezi.mp4?raw=true)
