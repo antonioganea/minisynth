@@ -29,6 +29,7 @@ public:
 
     void press(int button);
     void release(int button);
+    ~BayanKeyboard();
 };
 
 

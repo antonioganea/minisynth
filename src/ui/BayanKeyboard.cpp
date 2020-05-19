@@ -31,6 +31,12 @@ BayanKeyboard::BayanKeyboard(){
     }
 }
 
+BayanKeyboard::~BayanKeyboard(){
+    for ( auto & button: buttons ){
+        delete button;
+    }
+}
+
 void BayanKeyboard::draw(sf::RenderTarget& target, sf::RenderStates states) const{
     for ( std::vector<BayanButton*>::const_iterator it = buttons.begin(); it != buttons.end(); it++ ){
         target.draw(**it);

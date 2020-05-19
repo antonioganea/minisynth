@@ -18,6 +18,7 @@ using namespace std;
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 400), "Minisynth");
+    window.setFramerateLimit(60);
     window.setKeyRepeatEnabled(false);
     auto keyboard = UIFactory::createBayanKeyboard();
 
@@ -97,6 +98,14 @@ int main()
         window.draw(emanager);
         window.display();
     }
+
+    delete durationKnob;
+    delete pwmKnob;
+    delete volumeKnob;
+    delete button1;
+    delete button2;
+    delete button3;
+    delete button4;
 
     return 0;
 }
