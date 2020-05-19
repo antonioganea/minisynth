@@ -14,6 +14,7 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
+					<Add directory="include/ui" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,6 +24,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="include/ui" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,11 +35,29 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/AssetsRegistry.hpp" />
+		<Unit filename="include/Interactable.hpp" />
+		<Unit filename="include/SoundSynth.h" />
+		<Unit filename="include/Utils.hpp" />
+		<Unit filename="include/VirtualController.hpp" />
 		<Unit filename="include/ui/BayanButton.hpp" />
 		<Unit filename="include/ui/BayanKeyboard.hpp" />
+		<Unit filename="include/ui/Button.hpp" />
+		<Unit filename="include/ui/ElementManager.hpp" />
+		<Unit filename="include/ui/Knob.hpp" />
+		<Unit filename="include/ui/Label.hpp" />
+		<Unit filename="include/ui/UIFactory.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/AssetsRegistry.cpp" />
+		<Unit filename="src/SoundSynth.cpp" />
+		<Unit filename="src/VirtualController.cpp" />
 		<Unit filename="src/ui/BayanButton.cpp" />
 		<Unit filename="src/ui/BayanKeyboard.cpp" />
+		<Unit filename="src/ui/Button.cpp" />
+		<Unit filename="src/ui/ElementManager.cpp" />
+		<Unit filename="src/ui/Knob.cpp" />
+		<Unit filename="src/ui/Label.cpp" />
+		<Unit filename="src/ui/UIFactory.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

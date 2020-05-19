@@ -21,6 +21,8 @@ int main()
     window.setKeyRepeatEnabled(false);
     auto keyboard = UIFactory::createBayanKeyboard();
 
+    window.setFramerateLimit(60);
+
     VirtualController* vc = VirtualController::getInstance();
 
     Knob * durationKnob = UIFactory::createKnob("Duration", 30, 150);
@@ -97,6 +99,14 @@ int main()
         window.draw(emanager);
         window.display();
     }
+
+    delete durationKnob;
+    delete pwmKnob;
+    delete volumeKnob;
+    delete button1;
+    delete button2;
+    delete button3;
+    delete button4;
 
     return 0;
 }
