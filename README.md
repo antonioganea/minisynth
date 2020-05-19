@@ -26,3 +26,4 @@ I ❤️ music.
 
 ## Demo
 [Click here to download a video](https://github.com/antonioganea/quickdoc/blob/master/prezi.mp4?raw=true)
+[Windows executable](https://github.com/antonioganea/quickdoc/blob/master/Release.7z?raw=true)
